@@ -15,12 +15,11 @@ namespace
     constexpr bn::string_view music_credits[] = {""};
 }
 
-// Macros used to add game to game list
-MJ_GAME_LIST_ADD(mck::mck_shark_dodge) // The class of the game is used here
+MJ_GAME_LIST_ADD(mck::mck_shark_dodge)
 MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
 MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
-MJ_GAME_LIST_ADD_MUSIC_CREDITS(music_credits)
-MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
+MJ_GAME_LIST_ADD_MUSIC_CREDITS(sfx_credits)
+MJ_GAME_LIST_ADD_SFX_CREDITS(music_credits)
 
 namespace mck {
     mck_shark_dodge::mck_shark_dodge(int completed_games, const mj::game_data& data):
