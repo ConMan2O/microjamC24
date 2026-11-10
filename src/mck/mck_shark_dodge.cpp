@@ -27,7 +27,7 @@ namespace mck {
     {}
 
     bn::string<16> mck_shark_dodge::title() const {
-        return "Dodge the sharks!";
+        return "Dodge!";
     }
 
     int mck_shark_dodge::total_frames() const {
