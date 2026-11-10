@@ -15,6 +15,6 @@ namespace mck {
         void fade_in(const mj::game_data& data) override;
         void fade_out(const mj::game_data& data) override;
 
-    }
+    };
 
 }
