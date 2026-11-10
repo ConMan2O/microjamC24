@@ -6,6 +6,7 @@ namespace mck {
 
     class mck_shark_dodge : public mj::game {
 
+        public:
         mck_shark_dodge(int completed_games, const mj::game_data& data);
 
         bn::string<16> title() const override;
