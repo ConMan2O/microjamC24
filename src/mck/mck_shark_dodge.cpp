@@ -9,6 +9,7 @@
 
 namespace
 {
+    // TODO add names to credits as appropriate
     constexpr bn::string_view code_credits[] = { "" };
     constexpr bn::string_view graphics_credits[] = { "" };
     constexpr bn::string_view sfx_credits[] = {""};
@@ -27,7 +28,7 @@ namespace mck {
     {}
 
     bn::string<16> mck_shark_dodge::title() const {
-        return "Dodge the sharks!";
+        return "Dodge!";
     }
 
     int mck_shark_dodge::total_frames() const {
