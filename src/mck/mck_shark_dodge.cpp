@@ -1,5 +1,19 @@
 #include "mck_shark_dodge.h"
 
+namespace
+{
+    constexpr bn::string_view code_credits[] = { "" };
+    constexpr bn::string_view graphics_credits[] = { "" };
+    constexpr bn::string_view sfx_credits[] = {""};
+    constexpr bn::string_view music_credits[] = {""};
+}
+
+MJ_GAME_LIST_ADD(mck::mck_shark_dodge)
+MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
+MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
+MJ_GAME_LIST_ADD_MUSIC_CREDITS(sfx_credits)
+MJ_GAME_LIST_ADD_SFX_CREDITS(music_credits)
+
 namespace mck {
     mck_shark_dodge::mck_shark_dodge():
         mj::game('mck')
