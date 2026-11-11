@@ -6,7 +6,6 @@
 #include "bn_sprite_animate_actions.h"
 
 #include "mj/mj_game_list.h"
-#include "mck/mck_player.h"
 
 namespace
 {
@@ -25,7 +24,8 @@ MJ_GAME_LIST_ADD_SFX_CREDITS(music_credits)
 
 namespace mck {
     mck_shark_dodge::mck_shark_dodge(int completed_games, const mj::game_data& data):
-        mj::game("mck")
+        mj::game("mck"),
+        _player(player({0, 0}, 1))
     {}
 
     bn::string<16> mck_shark_dodge::title() const {
@@ -33,7 +33,7 @@ namespace mck {
     }
 
     int mck_shark_dodge::total_frames() const {
-    return 600; // 300 frames at 60fps = 5 seconds
+    return 600; // 600 frames at 60fps = 10 seconds
 }
 
 /**
@@ -48,6 +48,8 @@ namespace mck {
  */
 mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data)
 {
+    // update the player position
+    _player.update();
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)

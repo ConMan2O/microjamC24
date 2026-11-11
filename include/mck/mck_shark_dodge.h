@@ -1,6 +1,10 @@
 #pragma once
 
+#include <bn_regular_bg_ptr.h>
+#include <bn_sprite_ptr.h>
+
 #include "mj/mj_game.h"
+#include "mck_player.h"
 
 namespace mck {
 
@@ -16,6 +20,10 @@ namespace mck {
         void fade_in(const mj::game_data& data) override;
         void fade_out(const mj::game_data& data) override;
 
+        private:
+        // The character that the player can move
+        player _player;
+        // bn::regular_bg_ptr _background;
     };
 
 }
