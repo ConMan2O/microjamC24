@@ -1,4 +1,4 @@
-#include "mck_shark_dodge.h"
+#include "mck/mck_shark_dodge.h"
 
 #include "bn_keypad.h"
 #include "bn_display.h"
@@ -6,11 +6,12 @@
 #include "bn_sprite_animate_actions.h"
 
 #include "mj/mj_game_list.h"
+#include "mck/mck_player.h"
 
 namespace
 {
     // TODO add names to credits as appropriate
-    constexpr bn::string_view code_credits[] = { "" };
+    constexpr bn::string_view code_credits[] = { "Matthew, Connor, Kevin" };
     constexpr bn::string_view graphics_credits[] = { "" };
     constexpr bn::string_view sfx_credits[] = {""};
     constexpr bn::string_view music_credits[] = {""};
