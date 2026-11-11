@@ -1,4 +1,4 @@
-#include "mck_player.h"
+#include "mck/mck_player.h"
 
 #include <bn_keypad.h>
 
@@ -42,4 +42,10 @@ void mck::player::_update_position() {
         _sprite.set_y(_sprite.y() + _speed);
     }
 }
+
+bn::rect player::hitbox() const {
+    return bn::rect(_sprite.x().integer(), _sprite.y().integer(), 16, 16);
 }
+
+}
+

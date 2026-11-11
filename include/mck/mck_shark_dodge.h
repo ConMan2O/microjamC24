@@ -24,7 +24,8 @@ namespace mck {
         private:
         // The character that the player can move
         player _player;
-        // bn::regular_bg_ptr _background;
+        enemy _enemy;
+        bool _hit = false;
     };
 
 }

@@ -3,6 +3,7 @@
 #include <bn_fixed_point.h>
 #include <bn_sprite_ptr.h>
 #include <bn_display.h>
+#include <bn_rect.h>
 
 // All game functions/classes/variables/constants scoped to the namespace
 namespace mck {
@@ -26,6 +27,8 @@ class enemy {
          * @param yspeed the enemy's speed in the y direction
          */
         enemy(bn::fixed_point starting_position, bn::fixed xspeed, bn::fixed yspeed);
+
+        bn::rect hitbox() const;
 
         /**
          * Moves the enemy based on its x and y speed

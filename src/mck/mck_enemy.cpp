@@ -33,4 +33,8 @@ void mck::enemy::_update_position() {
     _sprite.set_x(_sprite.x() + x_speed);
     _sprite.set_y(_sprite.y() + y_speed);
 }
+
+bn::rect enemy::hitbox() const {
+    return bn::rect(_sprite.x().integer(), _sprite.y().integer(), 16, 16);
+}
 }
