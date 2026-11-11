@@ -1,4 +1,4 @@
-#include "mck_shark_dodge.h"
+#include "mck/mck_shark_dodge.h"
 
 #include "bn_keypad.h"
 #include "bn_display.h"
@@ -6,6 +6,7 @@
 #include "bn_sprite_animate_actions.h"
 
 #include "mj/mj_game_list.h"
+#include "mck/mck_player.h"
 
 namespace
 {
@@ -81,4 +82,6 @@ void mck_shark_dodge::fade_in([[maybe_unused]] const mj::game_data& data)
 void mck_shark_dodge::fade_out([[maybe_unused]] const mj::game_data& data)
 {
 }
+
+
 }
