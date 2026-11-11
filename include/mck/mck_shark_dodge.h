@@ -5,6 +5,7 @@
 
 #include "mj/mj_game.h"
 #include "mck_player.h"
+#include "mck_enemy.h"
 
 namespace mck {
 

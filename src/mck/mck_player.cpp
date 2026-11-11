@@ -1,4 +1,4 @@
-#include "mck/mck_player.h"
+#include "mck_player.h"
 
 #include <bn_keypad.h>
 
