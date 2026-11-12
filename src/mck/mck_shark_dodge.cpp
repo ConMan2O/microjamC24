@@ -23,7 +23,7 @@ MJ_GAME_LIST_ADD_MUSIC_CREDITS(sfx_credits)
 MJ_GAME_LIST_ADD_SFX_CREDITS(music_credits)
 
 namespace mck {
-    mck_shark_dodge::mck_shark_dodge(int completed_games, const mj::game_data& data):
+    mck_shark_dodge::mck_shark_dodge([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data):
         mj::game("mck"),
         _player(player({0, 0}, 1)),
         _enemy(enemy({60, -60}, 0, 0))
