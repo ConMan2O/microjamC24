@@ -4,6 +4,7 @@
 #include "bn_display.h"
 #include "bn_sprite_ptr.h"
 #include "bn_sprite_animate_actions.h"  
+#include <bn_random.h>
 
 #include "mj/mj_game_list.h"
 
@@ -26,7 +27,8 @@ namespace mck {
     mck_shark_dodge::mck_shark_dodge([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data):
         mj::game("mck"),
         _player(player({0, 0}, 1)),
-        _enemy(enemy({60, -60}, enemy_speed(recommended_difficulty_level(completed_games, data)), enemy_speed(recommended_difficulty_level(completed_games, data))))
+        _enemy(enemy({60, -60}, enemy_speed(recommended_difficulty_level(completed_games, data)), enemy_speed(recommended_difficulty_level(completed_games, data)))),
+        _urchin(urchin(urchin_location()))
     {}
 
     bn::string<16> mck_shark_dodge::title() const {
@@ -58,6 +60,10 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
     // The title is not hidden early (false is passed), so the title disappears at the default time
 
     if(_player.hitbox().intersects(_enemy.hitbox())) {
+        _hit = true;
+    }
+
+    if(_player.hitbox().intersects(_urchin.hitbox())) {
         _hit = true;
     }
 
@@ -101,5 +107,20 @@ bn::fixed mck_shark_dodge::enemy_speed(mj::difficulty_level difficulty){
     } 
     return 3;
 };
+
+/**
+ * selects a location for the urchin
+ */
+bn::fixed_point mck_shark_dodge::urchin_location() {
+    static constexpr int MAX_X = bn::display::width() / 2;
+    static constexpr int MIN_X = - bn::display::width() / 2;
+    static constexpr int MAX_Y = bn::display::height() / 2;
+    static constexpr int MIN_Y = - bn::display::height() / 2;
+    
+    int spawn_x = rand_spawn.get_int(MIN_X, MAX_X);
+    int spawn_y = rand_spawn.get_int(MIN_Y, MAX_Y);
+
+    return bn::fixed_point(spawn_x, spawn_y);
+}
 
 }

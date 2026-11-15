@@ -2,7 +2,6 @@
 
 #include <bn_keypad.h>
 
-#include "bn_sprite_items_urchin.h"
 #include "bn_sprite_items_shark.h"
 
 #include "bn_sound_items.h"
