@@ -2,8 +2,8 @@
 
 #include <bn_keypad.h>
 
-#include "bn_sprite_items_urchin.h"
-#include "bn_sprite_items_fish.h"
+#include "bn_sprite_items_mck_urchin.h"
+#include "bn_sprite_items_mck_fish.h"
 
 #include "bn_sound_items.h"
 
@@ -21,7 +21,7 @@ namespace mck {
  * @param speed the pixels/frame the player moves at in each dimension
  */
 player::player(bn::fixed_point starting_position, bn::fixed speed) :
-    _sprite(bn::sprite_items::fish.create_sprite(starting_position)),
+    _sprite(bn::sprite_items::mck_fish.create_sprite(starting_position)),
     _speed(speed)
     {}
 

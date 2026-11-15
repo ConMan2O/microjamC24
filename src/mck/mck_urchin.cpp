@@ -1,6 +1,6 @@
 #include "mck/mck_urchin.h"
 
-#include "bn_sprite_items_urchin.h"
+#include "bn_sprite_items_mck_urchin.h"
 
 namespace mck {
 
