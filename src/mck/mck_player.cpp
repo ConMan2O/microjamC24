@@ -43,15 +43,9 @@ void mck::player::_update_position() {
     }
 }
 
-/**
- * Returns whether the player has left the screen
- * 
- * @return true if the player has left the screen, false if it is still on the screen
- */
-bool player::out_of_bounds() const {
-    return _sprite.x() > MAX_X ||
-           _sprite.x() < MIN_X ||
-           _sprite.y() > MAX_Y ||
-           _sprite.y() < MIN_Y;
+bn::rect player::hitbox() const {
+    return bn::rect(_sprite.x().integer(), _sprite.y().integer(), 16, 16);
 }
+
 }
+

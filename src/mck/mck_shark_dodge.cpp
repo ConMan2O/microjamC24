@@ -3,10 +3,9 @@
 #include "bn_keypad.h"
 #include "bn_display.h"
 #include "bn_sprite_ptr.h"
-#include "bn_sprite_animate_actions.h"
+#include "bn_sprite_animate_actions.h"  
 
 #include "mj/mj_game_list.h"
-#include "mck/mck_player.h"
 
 namespace
 {
@@ -24,8 +23,10 @@ MJ_GAME_LIST_ADD_MUSIC_CREDITS(sfx_credits)
 MJ_GAME_LIST_ADD_SFX_CREDITS(music_credits)
 
 namespace mck {
-    mck_shark_dodge::mck_shark_dodge(int completed_games, const mj::game_data& data):
-        mj::game("mck")
+    mck_shark_dodge::mck_shark_dodge([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data):
+        mj::game("mck"),
+        _player(player({0, 0}, 1)),
+        _enemy(enemy({60, -60}, 0, 0))
     {}
 
     bn::string<16> mck_shark_dodge::title() const {
@@ -33,7 +34,7 @@ namespace mck {
     }
 
     int mck_shark_dodge::total_frames() const {
-    return 600; // 300 frames at 60fps = 5 seconds
+    return 600; // 600 frames at 60fps = 10 seconds
 }
 
 /**
@@ -48,12 +49,20 @@ namespace mck {
  */
 mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data)
 {
+    // update the player position
+    _player.update();
+    _enemy.update();
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)
     // The title is not hidden early (false is passed), so the title disappears at the default time
-    mj::game_result result(victory(), false);
-    return result;
+
+    if(_player.hitbox().intersects(_enemy.hitbox())) {
+        _hit = true;
+    }
+
+    mj::game_result result(_hit, false);
+    return result;;
 }
 
 /**
@@ -62,7 +71,7 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
  * In this particular microgame the player wins if they make the ball leave the screen.
  */
 bool mck_shark_dodge::victory() const {
-    return false;
+    return !_hit;
 }
 
 /**
