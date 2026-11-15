@@ -2,7 +2,7 @@
 
 #include <bn_keypad.h>
 
-#include "bn_sprite_items_shark.h"
+#include "bn_sprite_items_mck_shark.h"
 
 #include "bn_sound_items.h"
 
@@ -16,9 +16,9 @@ namespace mck {
  * @param speed the pixels/frame the enemy moves at in each dimension
  */
 enemy::enemy(bn::fixed_point starting_position, bn::fixed xspeed, bn::fixed yspeed) :
-    _sprite(bn::sprite_items::shark.create_sprite(starting_position)),
-    x_speed(xspeed),
-    y_speed(yspeed)
+    _sprite(bn::sprite_items::mck_shark.create_sprite(starting_position)),
+    _xspeed(xspeed),
+    _yspeed(yspeed)
     {}
 
 
@@ -30,8 +30,8 @@ void enemy::update() {
  * Moves the enemy based on its current x and y speeds
  */
 void mck::enemy::_update_position() {
-    _sprite.set_x(_sprite.x() + x_speed);
-    _sprite.set_y(_sprite.y() + y_speed);
+    _sprite.set_x(_sprite.x() + _xspeed);
+    _sprite.set_y(_sprite.y() + _yspeed);
 }
 
 bn::rect enemy::hitbox() const {

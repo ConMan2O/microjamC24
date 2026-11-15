@@ -39,8 +39,8 @@ class enemy {
         // The sprite to display the enemy
         bn::sprite_ptr _sprite;
         // The pixels/frame the enemy moves in each dimension
-        bn::fixed x_speed;
-        bn::fixed y_speed;
+        bn::fixed _xspeed;
+        bn::fixed _yspeed;
 
         /**
          * Moves the enemy based on its current x and y speeds
