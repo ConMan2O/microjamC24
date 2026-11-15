@@ -55,10 +55,6 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
     _player.update();
     _enemy.update();
 
-    // Creates a game result indicating whether the game is finished and whether the title should be hidden early
-    // For this game the game should end early if the player has won (if victory returns true)
-    // The title is not hidden early (false is passed), so the title disappears at the default time
-
     if(_player.hitbox().intersects(_enemy.hitbox())) {
         _hit = true;
     }
@@ -68,7 +64,7 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
     }
 
     mj::game_result result(_hit, false);
-    return result;;
+    return result;
 }
 
 /**
