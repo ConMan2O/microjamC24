@@ -26,7 +26,7 @@ namespace mck {
     mck_shark_dodge::mck_shark_dodge([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data):
         mj::game("mck"),
         _player(player({0, 0}, 1)),
-        _enemy(enemy({60, -60}, 0, 0))
+        _enemy(enemy({60, -60}, enemy_speed(recommended_difficulty_level(completed_games, data)), enemy_speed(recommended_difficulty_level(completed_games, data))))
     {}
 
     bn::string<16> mck_shark_dodge::title() const {
@@ -92,5 +92,14 @@ void mck_shark_dodge::fade_out([[maybe_unused]] const mj::game_data& data)
 {
 }
 
+ // Determines Enemy speed
+bn::fixed mck_shark_dodge::enemy_speed(mj::difficulty_level difficulty){
+    if(difficulty == mj::difficulty_level::EASY) {
+        return 1;
+    } else if (difficulty == mj::difficulty_level::NORMAL) {
+        return 2;
+    } 
+    return 3;
+};
 
 }

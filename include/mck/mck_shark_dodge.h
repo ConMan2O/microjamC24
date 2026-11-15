@@ -26,6 +26,9 @@ namespace mck {
         player _player;
         enemy _enemy;
         bool _hit = false;
+
+        // Determines Enemy speed
+        bn::fixed enemy_speed(mj::difficulty_level difficulty);
     };
 
 }
