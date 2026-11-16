@@ -27,11 +27,13 @@ namespace mck {
     mck_shark_dodge::mck_shark_dodge([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data):
         mj::game("mck"),
         _player(player({0, 0}, 1)),
-        _shark1(enemy(enemy_speed(recommended_difficulty_level(completed_games, data)), data)),
-        _shark2(enemy(enemy_speed(recommended_difficulty_level(completed_games, data)) + 0.5, data)),
-        _shark3(enemy(enemy_speed(recommended_difficulty_level(completed_games, data)) + 1, data)),
-        _urchin(urchin(urchin_location()))
-    {}
+        _urchin(urchin(urchin_location())),
+        _enemy_speed(enemy_speed(recommended_difficulty_level(completed_games, data)))
+    {
+        for (int i = 0; i < 3; i++) { // add 3 enemies to the vector initially
+            _enemies.push_back(enemy(_enemy_speed, data));
+        }
+    }
 
     bn::string<16> mck_shark_dodge::title() const {
         return "Dodge!";
@@ -55,16 +57,27 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
 {
     // update the player position
     _player.update();
-    _shark1.update();
-    _shark2.update();
-    _shark3.update();
 
-    if(_player.hitbox().intersects(_shark1.hitbox()) || _player.hitbox().intersects(_shark2.hitbox()) || _player.hitbox().intersects(_shark3.hitbox())) {
-        _hit = true;
+    // update all enemy positions, check for collisions
+    for (enemy e : _enemies) {
+        e.update();
+        if(_player.hitbox().intersects(e.hitbox()) ){
+            _hit = true;
+            break; // game has ended: no need to iterate further
+        }
     }
 
     if(_player.hitbox().intersects(_urchin.hitbox())) {
         _hit = true;
+    }
+
+    if (!_hit) { // proceed only if player has not lost
+        _timer++;
+        if (_timer % 50 == 0) { // every 50 frames, make 3 more sharks
+            for (int i = 0; i < 3; i++) {
+                _enemies.push_back(enemy(_enemy_speed, data));
+            }
+        }
     }
 
     mj::game_result result(_hit, false);

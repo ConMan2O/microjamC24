@@ -26,12 +26,12 @@ namespace mck {
         private:
         // The character that the player can move
         player _player;
-        enemy _shark1;
-        enemy _shark2;
-        enemy _shark3;
+        bn::vector<enemy, 40> _enemies;
         urchin _urchin;
         bn::random rand_spawn;
         bool _hit = false;
+        int _timer = 0;
+        bn::fixed _enemy_speed;
 
         // Determines Enemy speed
         bn::fixed enemy_speed(mj::difficulty_level difficulty);
