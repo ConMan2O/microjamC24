@@ -16,6 +16,7 @@ namespace mck {
  * @param data the current game data, used for random number generation
  */
 enemy::enemy(bn::fixed speed, const mj::game_data& data) :
+    // default values for instance variables; overwritten later
     _sprite(bn::sprite_items::mck_shark.create_sprite(bn::fixed_point(0, 0))),
     _xspeed(0),
     _yspeed(0)
