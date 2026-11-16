@@ -26,7 +26,9 @@ namespace mck {
         private:
         // The character that the player can move
         player _player;
-        enemy _enemy;
+        enemy _shark1;
+        enemy _shark2;
+        enemy _shark3;
         urchin _urchin;
         bn::random rand_spawn;
         bool _hit = false;
