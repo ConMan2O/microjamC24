@@ -5,11 +5,13 @@
 #include <bn_display.h>
 #include <bn_rect.h>
 
+#include "mj/mj_game.h"
+
 // All game functions/classes/variables/constants scoped to the namespace
 namespace mck {
 
 /**
- * A character controlled with the d-pad.
+ * An obstacle character not controlled by the player.
  */
 class enemy {
         // The bounds of the screen
@@ -22,11 +24,10 @@ class enemy {
         /**
          * enemy constructor
          * 
-         * @param starting_position the location to start the enemy at
-         * @param xspeed the enemy's speed in the x direction
-         * @param yspeed the enemy's speed in the y direction
+         * @param speed the enemy's speed
+         * @param data the current game data, used for random number generation
          */
-        enemy(bn::fixed_point starting_position, bn::fixed xspeed, bn::fixed yspeed);
+        enemy(bn::fixed speed, const mj::game_data& data);
 
         bn::rect hitbox() const;
 

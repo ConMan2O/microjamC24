@@ -27,9 +27,9 @@ namespace mck {
     mck_shark_dodge::mck_shark_dodge([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data):
         mj::game("mck"),
         _player(player({0, 0}, 1)),
-        _shark1(enemy({136, -48}, -enemy_speed(recommended_difficulty_level(completed_games, data)), 0)),
-        _shark2(enemy({176, 0}, -(enemy_speed(recommended_difficulty_level(completed_games, data)) + 0.5), 0)),
-        _shark3(enemy({216, 48}, -(enemy_speed(recommended_difficulty_level(completed_games, data)) + 1), 0)),
+        _shark1(enemy(enemy_speed(recommended_difficulty_level(completed_games, data)), data)),
+        _shark2(enemy(enemy_speed(recommended_difficulty_level(completed_games, data)) + 0.5, data)),
+        _shark3(enemy(enemy_speed(recommended_difficulty_level(completed_games, data)) + 1, data)),
         _urchin(urchin(urchin_location()))
     {}
 
