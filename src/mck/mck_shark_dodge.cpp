@@ -113,11 +113,10 @@ bn::fixed mck_shark_dodge::enemy_speed(mj::difficulty_level difficulty){
  */
 bn::fixed_point mck_shark_dodge::urchin_location() {
     static constexpr int MAX_X = bn::display::width() / 2;
-    static constexpr int MIN_X = - bn::display::width() / 2;
     static constexpr int MAX_Y = bn::display::height() / 2;
     static constexpr int MIN_Y = - bn::display::height() / 2;
     
-    int spawn_x = rand_spawn.get_int(MIN_X, MAX_X);
+    int spawn_x = rand_spawn.get_int(32, MAX_X);
     int spawn_y = rand_spawn.get_int(MIN_Y, MAX_Y);
 
     return bn::fixed_point(spawn_x, spawn_y);
