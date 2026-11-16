@@ -20,8 +20,8 @@ namespace
 MJ_GAME_LIST_ADD(mck::mck_shark_dodge)
 MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
 MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
-MJ_GAME_LIST_ADD_MUSIC_CREDITS(sfx_credits)
-MJ_GAME_LIST_ADD_SFX_CREDITS(music_credits)
+MJ_GAME_LIST_ADD_MUSIC_CREDITS(music_credits)
+MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
 
 namespace mck {
     mck_shark_dodge::mck_shark_dodge([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data):
