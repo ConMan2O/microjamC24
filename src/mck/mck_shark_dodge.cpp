@@ -58,7 +58,6 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
     // update the player position
     _player.update();
 
-<<<<<<< HEAD
     // update all enemy positions, check for collisions
     for (enemy e : _enemies) {
         e.update();
@@ -69,9 +68,6 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
     }
 
     if(_player.hitbox().intersects(_urchin.hitbox())) {
-=======
-    if(_player.hitbox().intersects(_enemy.hitbox())) {
->>>>>>> 1c142231f27590b066e6c63de873cb8aab0d9ecf
         _hit = true;
     }
 

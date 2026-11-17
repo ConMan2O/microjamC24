@@ -2,11 +2,7 @@
 
 #include <bn_keypad.h>
 
-#include "bn_sprite_items_mck_urchin.h"
-<<<<<<< HEAD
 #include "bn_sprite_items_mck_fish.h"
-=======
->>>>>>> 1c142231f27590b066e6c63de873cb8aab0d9ecf
 
 #include "bn_sound_items.h"
 
