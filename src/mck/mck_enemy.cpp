@@ -15,6 +15,7 @@ namespace mck {
  * @param speed the pixels/frame the enemy moves at in each dimension
  * @param data the current game data, used for random number generation
  */
+<<<<<<< HEAD
 enemy::enemy(bn::fixed speed, const mj::game_data& data) :
     // default values for instance variables; overwritten later
     _sprite(bn::sprite_items::mck_shark.create_sprite(bn::fixed_point(0, 0))),
@@ -54,6 +55,13 @@ enemy::enemy(bn::fixed speed, const mj::game_data& data) :
             _yspeed = 0;
         }
     }
+=======
+enemy::enemy(bn::fixed_point starting_position, bn::fixed xspeed, bn::fixed yspeed) :
+    _sprite(bn::sprite_items::mck_urchin.create_sprite(starting_position)),
+    _xspeed(xspeed),
+    _yspeed(yspeed)
+    {}
+>>>>>>> 1c142231f27590b066e6c63de873cb8aab0d9ecf
 
 
 void enemy::update() {

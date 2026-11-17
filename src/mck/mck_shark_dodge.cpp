@@ -11,17 +11,17 @@
 namespace
 {
     // TODO add names to credits as appropriate
-    constexpr bn::string_view code_credits[] = {"Matthew Renner", "Connor Stimpson", "Kevin Flores-Gonzalez"};
-    constexpr bn::string_view graphics_credits[] = {""};
-    constexpr bn::string_view sfx_credits[] = {""};
-    constexpr bn::string_view music_credits[] = {""};
+    constexpr bn::string_view code_credits[] = { "Matthew Renner", "Connor Stimpson", "Kevin Flores-Gonzalez" };
+    //constexpr bn::string_view graphics_credits[] = {};
+    //constexpr bn::string_view sfx_credits[] = {};
+    //constexpr bn::string_view music_credits[] = {};
 }
 
 MJ_GAME_LIST_ADD(mck::mck_shark_dodge)
 MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
-MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
-MJ_GAME_LIST_ADD_MUSIC_CREDITS(music_credits)
-MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
+//MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
+//MJ_GAME_LIST_ADD_MUSIC_CREDITS(sfx_credits)
+//MJ_GAME_LIST_ADD_SFX_CREDITS(music_credits)
 
 namespace mck {
     mck_shark_dodge::mck_shark_dodge([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data):
@@ -58,6 +58,7 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
     // update the player position
     _player.update();
 
+<<<<<<< HEAD
     // update all enemy positions, check for collisions
     for (enemy e : _enemies) {
         e.update();
@@ -68,6 +69,9 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
     }
 
     if(_player.hitbox().intersects(_urchin.hitbox())) {
+=======
+    if(_player.hitbox().intersects(_enemy.hitbox())) {
+>>>>>>> 1c142231f27590b066e6c63de873cb8aab0d9ecf
         _hit = true;
     }
 
