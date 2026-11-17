@@ -28,9 +28,10 @@ namespace mck {
         mj::game("mck"),
         _player(player({0, 0}, 1)),
         _urchin(urchin(urchin_location())),
-        _enemy_speed(enemy_speed(recommended_difficulty_level(completed_games, data)))
+        _enemy_speed(enemy_speed(recommended_difficulty_level(completed_games, data))),
+        _wave_size(wave_size(recommended_difficulty_level(completed_games, data)))
     {
-        for (int i = 0; i < 3; i++) { // add 3 enemies to the vector initially
+        for (int i = 0; i < _wave_size; i++) { // add 3 enemies to the vector initially
             _enemies.push_back(enemy(_enemy_speed, data));
         }
     }
@@ -40,7 +41,7 @@ namespace mck {
     }
 
     int mck_shark_dodge::total_frames() const {
-    return 600; // 600 frames at 60fps = 10 seconds
+    return 480; // 480 frames at 60fps = 8 seconds
 }
 
 /**
@@ -73,8 +74,8 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
 
     if (!_hit) { // proceed only if player has not lost
         _timer++;
-        if (_timer % 50 == 0) { // every 50 frames, make 3 more sharks
-            for (int i = 0; i < 3; i++) {
+        if (_timer % 60 == 0) { // every 60 frames, spawn a new wave
+            for (int i = 0; i < _wave_size; i++) {
                 _enemies.push_back(enemy(_enemy_speed, data));
             }
         }
@@ -111,14 +112,24 @@ void mck_shark_dodge::fade_out([[maybe_unused]] const mj::game_data& data)
 {
 }
 
- // Determines Enemy speed
+// Determines Enemy speed
 bn::fixed mck_shark_dodge::enemy_speed(mj::difficulty_level difficulty){
     if(difficulty == mj::difficulty_level::EASY) {
-        return 1;
+        return _enemy_speeds[0];
     } else if (difficulty == mj::difficulty_level::NORMAL) {
-        return 2;
+        return _enemy_speeds[1];
     } 
-    return 3;
+    return _enemy_speeds[2];
+};
+
+// Determines wave size
+bn::fixed mck_shark_dodge::wave_size(mj::difficulty_level difficulty){
+    if(difficulty == mj::difficulty_level::EASY) {
+        return _wave_sizes[0];
+    } else if (difficulty == mj::difficulty_level::NORMAL) {
+        return _wave_sizes[1];
+    } 
+    return _wave_sizes[2];
 };
 
 /**

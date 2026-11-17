@@ -31,10 +31,16 @@ namespace mck {
         bn::random rand_spawn;
         bool _hit = false;
         int _timer = 0;
+        const bn::fixed _enemy_speeds[3] = {0.8, 0.8, 1};
+        const bn::fixed _wave_sizes[3] = {2, 3, 3};
         bn::fixed _enemy_speed;
+        bn::fixed _wave_size;
 
         // Determines Enemy speed
         bn::fixed enemy_speed(mj::difficulty_level difficulty);
+
+        // Determines wave size
+        bn::fixed wave_size(mj::difficulty_level difficulty);
 
         /**
          * selects a location for the urchin
