@@ -5,14 +5,12 @@
 #include "bn_sprite_items_mck_fish.h"
 
 #include "bn_sound_items.h"
+#include "mck/mck_bounds.h"
 
 // All game functions/classes/variables/constants scoped to the namespace
 namespace mck {
     // The bounds of the screen
-    static constexpr int MAX_X = bn::display::width() / 2;
-    static constexpr int MIN_X = - bn::display::width() / 2;
-    static constexpr int MAX_Y = bn::display::height() / 2;
-    static constexpr int MIN_Y = - bn::display::height() / 2;
+
 /**
  * player constructor
  * 

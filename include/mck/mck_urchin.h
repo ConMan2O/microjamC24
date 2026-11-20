@@ -5,7 +5,8 @@
 
 // All game functions/classes/variables/constants scoped to the namespace
 namespace mck {
-    class urchin {
+    class urchin {       
+        
         public:
         
         /**

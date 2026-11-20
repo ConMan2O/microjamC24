@@ -4,8 +4,10 @@
 #include <bn_sprite_ptr.h>
 #include <bn_display.h>
 #include <bn_rect.h>
+#include <bn_random.h>
 
 #include "mj/mj_game.h"
+#include "mck/mck_bounds.h"
 
 // All game functions/classes/variables/constants scoped to the namespace
 namespace mck {
@@ -15,10 +17,8 @@ namespace mck {
  */
 class enemy {
         // The bounds of the screen
-        static constexpr int MAX_X = bn::display::width() / 2;
-        static constexpr int MIN_X = - bn::display::width() / 2;
-        static constexpr int MAX_Y = bn::display::height() / 2;
-        static constexpr int MIN_Y = - bn::display::height() / 2;
+        static constexpr int SPAWN_MARGIN = 16; 
+        static constexpr int NUM_SIDES = 4;
 
     public:
         /**
@@ -27,7 +27,7 @@ class enemy {
          * @param speed the enemy's speed
          * @param data the current game data, used for random number generation
          */
-        enemy(bn::fixed speed, const mj::game_data& data);
+        enemy(bn::fixed speed, bn::random& random);
 
         bn::rect hitbox() const;
 
