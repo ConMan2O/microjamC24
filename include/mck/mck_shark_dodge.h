@@ -34,8 +34,8 @@ namespace mck {
         bn::random rand_spawn;
         bool _hit = false;
         int _timer = 0;
-        const bn::fixed _enemy_speeds[3] = {0.8, 0.8, 1};
-        const bn::fixed _wave_sizes[3] = {2, 3, 3};
+        const bn::fixed _enemy_speeds[3] = {0.8, 0.9, 1};
+        const bn::fixed _wave_sizes[3] = {2, 3, 4};
         bn::fixed _enemy_speed;
         bn::fixed _wave_size;
         bn::regular_bg_ptr _background;
