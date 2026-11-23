@@ -28,7 +28,7 @@ namespace mck {
         player _player;
         static constexpr int TOTAL_FRAMES = 600;
         static constexpr int WAVE_INTERVAL_FRAMES = 50;
-        static constexpr int MAX_ENEMIES = 40;
+        static constexpr int MAX_ENEMIES = 52;
         bn::vector<enemy, MAX_ENEMIES> _enemies;
         urchin _urchin;
         bn::random rand_spawn;

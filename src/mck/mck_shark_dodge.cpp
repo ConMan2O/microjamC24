@@ -35,6 +35,7 @@ namespace mck {
         _wave_size(wave_size(recommended_difficulty_level(completed_games, data))),
         _background(bn::regular_bg_items::mck_ocean_background.create_bg())
     {
+        _enemies.clear(); // clear the enemies array to make sure it is not overfilled during gameplay
         for (int i = 0; i < _wave_size; i++) { // add enemies to the vector based on difficulty
             _enemies.push_back(enemy(_enemy_speed, data.random));
         }

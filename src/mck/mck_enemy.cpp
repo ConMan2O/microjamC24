@@ -55,7 +55,7 @@ enemy::enemy(bn::fixed speed, bn::random& random) :
                 _yspeed = 0;
                 _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),3,4,5);
                 break;
-            default:
+            default :
                 break;
         }
     }
@@ -74,6 +74,6 @@ void mck::enemy::_update_position() {
 }
 
 bn::rect enemy::hitbox() const {
-    return bn::rect(_sprite.x().integer(), _sprite.y().integer(), 16, 16);
+    return bn::rect(_sprite.x().integer(), _sprite.y().integer(), 8, 8);
 }
 }

@@ -63,7 +63,7 @@ void mck::player::_update_position() {
 }
 
 bn::rect player::hitbox() const {
-    return bn::rect(_sprite.x().integer(), _sprite.y().integer(), 16, 16);
+    return bn::rect(_sprite.x().integer(), _sprite.y().integer(), 8, 8);
 }
 
 void mck::player::_fish_animation(){
