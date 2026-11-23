@@ -44,7 +44,7 @@ class enemy {
         bn::fixed _xspeed;
         bn::fixed _yspeed;
         // The animation for the enemy
-        bn::sprite_animate_action<2> _animation;
+        bn::sprite_animate_action<3> _animation;
 
         /**
          * Moves the enemy based on its current x and y speeds

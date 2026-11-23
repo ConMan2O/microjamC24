@@ -32,28 +32,28 @@ enemy::enemy(bn::fixed speed, bn::random& random) :
                     (bn::fixed_point(random.get_unbiased_int(MIN_X, MAX_X + 1), MIN_Y - SPAWN_MARGIN)));
                 _xspeed = 0;
                 _yspeed = speed;
-                _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),6,7);
+                _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),6,7,8);
                 break;
             case 1 : // right
                 _sprite = (bn::sprite_items::mck_shark.create_sprite
                     (bn::fixed_point(MAX_X + SPAWN_MARGIN, random.get_unbiased_int(MIN_Y, MAX_Y + 1))));
                 _xspeed = speed * -1;
                 _yspeed = 0;
-                _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),2,3);
+                _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),0,1,2);
                 break;
             case 2 : // bottom
                 _sprite = (bn::sprite_items::mck_shark.create_sprite
                     (bn::fixed_point(random.get_unbiased_int(MIN_X, MAX_X + 1), MAX_Y + SPAWN_MARGIN)));
                 _xspeed = 0;
                 _yspeed = speed * -1;
-                _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),4,5);
+                _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),9,10,11);
                 break;
             case 3 : // left
                 _sprite = (bn::sprite_items::mck_shark.create_sprite
                     (bn::fixed_point(MIN_X - SPAWN_MARGIN, random.get_unbiased_int(MIN_Y, MAX_Y + 1))));
                 _xspeed = speed;
                 _yspeed = 0;
-                _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),0,1);
+                _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_shark.tiles_item(),3,4,5);
                 break;
             default:
                 break;
