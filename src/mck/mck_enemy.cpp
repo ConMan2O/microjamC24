@@ -54,7 +54,6 @@ enemy::enemy(bn::fixed speed, bn::random& random) :
         }
     }
 
-
 void enemy::update() {
     _update_position();
 }

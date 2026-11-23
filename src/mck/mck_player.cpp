@@ -21,13 +21,13 @@ namespace mck {
 player::player(bn::fixed_point starting_position, bn::fixed speed) :
     _sprite(bn::sprite_items::mck_fish.create_sprite(starting_position)),
     _speed(speed),
-    _animation(bn::create_sprite_animate_action_forever(_sprite, 10, bn::sprite_items::mck_fish.tiles_item(),0,1))
+    _animation(bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_fish.tiles_item(),0,1))
     {}
 
 
 void player::update() {
     _update_position();
-    _animation.update();
+    _fish_animation();
     
     // Border
     if (_sprite.y() < MIN_Y){
@@ -64,6 +64,23 @@ void mck::player::_update_position() {
 
 bn::rect player::hitbox() const {
     return bn::rect(_sprite.x().integer(), _sprite.y().integer(), 16, 16);
+}
+
+void mck::player::_fish_animation(){
+    if(bn::keypad::left_held()) {
+        _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_fish.tiles_item(),2,3);
+    }
+    if(bn::keypad::right_held()) {
+        _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_fish.tiles_item(),0,1);
+    }
+    if(bn::keypad::up_held()) {
+        _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_fish.tiles_item(),4,5);
+    }
+    if(bn::keypad::down_held()) {
+        _animation = bn::create_sprite_animate_action_forever(_sprite, 8, bn::sprite_items::mck_fish.tiles_item(),6,7);
+    }
+
+    _animation.update();
 }
 
 }

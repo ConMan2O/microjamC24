@@ -42,6 +42,8 @@ class player {
          * Reads from the d-pad and moves the player by one frame accordingly.
          */
         void _update_position();
+
+        void _fish_animation();
         
 };
 
