@@ -1,6 +1,7 @@
 #include "mck/mck_player.h"
 
 #include <bn_keypad.h>
+#include <bn_sprite_animate_actions.h>
 
 #include "bn_sprite_items_mck_fish.h"
 
@@ -19,12 +20,14 @@ namespace mck {
  */
 player::player(bn::fixed_point starting_position, bn::fixed speed) :
     _sprite(bn::sprite_items::mck_fish.create_sprite(starting_position)),
-    _speed(speed)
+    _speed(speed),
+    _animation(bn::create_sprite_animate_action_forever(_sprite, 10, bn::sprite_items::mck_fish.tiles_item(),0,1))
     {}
 
 
 void player::update() {
     _update_position();
+    _animation.update();
     
     // Border
     if (_sprite.y() < MIN_Y){

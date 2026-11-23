@@ -2,6 +2,7 @@
 
 #include <bn_fixed_point.h>
 #include <bn_sprite_ptr.h>
+#include <bn_sprite_animate_actions.h>
 #include <bn_display.h>
 #include <bn_rect.h>
 
@@ -34,6 +35,8 @@ class player {
         bn::sprite_ptr _sprite;
         // The pixels/frame the player moves in each dimension
         bn::fixed _speed;
+
+        bn::sprite_animate_action<2> _animation;
 
         /**
          * Reads from the d-pad and moves the player by one frame accordingly.
