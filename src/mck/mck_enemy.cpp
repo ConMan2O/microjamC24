@@ -15,43 +15,42 @@ namespace mck {
  * @param speed the pixels/frame the enemy moves at in each dimension
  * @param data the current game data, used for random number generation
  */
-enemy::enemy(bn::fixed speed, const mj::game_data& data) :
+enemy::enemy(bn::fixed speed, bn::random& random) :
     // default values for instance variables; overwritten later
     _sprite(bn::sprite_items::mck_shark.create_sprite(bn::fixed_point(0, 0))),
     _xspeed(0),
     _yspeed(0)
     {
         // determine a random side for the shark to spawn on
-        int side = data.random.get_unbiased_int(4);
+        int side = random.get_unbiased_int(NUM_SIDES);
         switch (side)
         {
-        case 0 : // top
-            _sprite = (bn::sprite_items::mck_shark.create_sprite
-                (bn::fixed_point(data.random.get_unbiased_int(-120, 121), -80)));
-            _xspeed = 0;
-            _yspeed = speed;
-            break;
-        case 1 : // right
-            _sprite = (bn::sprite_items::mck_shark.create_sprite
-                (bn::fixed_point(120, data.random.get_unbiased_int(-80, 81))));
-            _xspeed = speed.multiplication(-1);
-            _yspeed = 0;
-            break;
-        case 2 : // bottom
-            _sprite = (bn::sprite_items::mck_shark.create_sprite
-                (bn::fixed_point(data.random.get_unbiased_int(-120, 121), 80)));
-            _xspeed = 0;
-            _yspeed = speed.multiplication(-1);
-            break;
-        case 3 : // left
-            _sprite = (bn::sprite_items::mck_shark.create_sprite
-                (bn::fixed_point(-120, data.random.get_unbiased_int(-80, 81))));
-            _xspeed = speed;
-            _yspeed = 0;
-            break;
-        default :
-            _xspeed = 0;
-            _yspeed = 0;
+            case 0 : // top
+                _sprite = (bn::sprite_items::mck_shark.create_sprite
+                    (bn::fixed_point(random.get_unbiased_int(MIN_X, MAX_X + 1), MIN_Y - SPAWN_MARGIN)));
+                _xspeed = 0;
+                _yspeed = speed;
+                break;
+            case 1 : // right
+                _sprite = (bn::sprite_items::mck_shark.create_sprite
+                    (bn::fixed_point(MAX_X + SPAWN_MARGIN, random.get_unbiased_int(MIN_Y, MAX_Y + 1))));
+                _xspeed = speed * -1;
+                _yspeed = 0;
+                break;
+            case 2 : // bottom
+                _sprite = (bn::sprite_items::mck_shark.create_sprite
+                    (bn::fixed_point(random.get_unbiased_int(MIN_X, MAX_X + 1), MAX_Y + SPAWN_MARGIN)));
+                _xspeed = 0;
+                _yspeed = speed * -1;
+                break;
+            case 3 : // left
+                _sprite = (bn::sprite_items::mck_shark.create_sprite
+                    (bn::fixed_point(MIN_X - SPAWN_MARGIN, random.get_unbiased_int(MIN_Y, MAX_Y + 1))));
+                _xspeed = speed;
+                _yspeed = 0;
+                break;
+            default:
+                break;
         }
     }
 

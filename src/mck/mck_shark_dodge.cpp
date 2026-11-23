@@ -7,6 +7,7 @@
 #include <bn_random.h>
 
 #include "mj/mj_game_list.h"
+#include "mck/mck_bounds.h"
 
 namespace
 {
@@ -31,8 +32,8 @@ namespace mck {
         _enemy_speed(enemy_speed(recommended_difficulty_level(completed_games, data))),
         _wave_size(wave_size(recommended_difficulty_level(completed_games, data)))
     {
-        for (int i = 0; i < _wave_size; i++) { // add 3 enemies to the vector initially
-            _enemies.push_back(enemy(_enemy_speed, data));
+        for (int i = 0; i < ENEMIES_PER_WAVE; i++) { // add 3 enemies to the vector initially
+            _enemies.push_back(enemy(_enemy_speed, data.random));
         }
     }
 
@@ -41,7 +42,7 @@ namespace mck {
     }
 
     int mck_shark_dodge::total_frames() const {
-    return 480; // 480 frames at 60fps = 8 seconds
+    return TOTAL_FRAMES; // 600 frames at 60fps = 10 seconds
 }
 
 /**
@@ -74,9 +75,9 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
 
     if (!_hit) { // proceed only if player has not lost
         _timer++;
-        if (_timer % 60 == 0) { // every 60 frames, spawn a new wave
-            for (int i = 0; i < _wave_size; i++) {
-                _enemies.push_back(enemy(_enemy_speed, data));
+        if (_timer % WAVE_INTERVAL_FRAMES == 0) { // every 50 frames, make 3 more sharks
+            for (int i = 0; i < ENEMIES_PER_WAVE; i++) {
+                _enemies.push_back(enemy(_enemy_speed, data.random));
             }
         }
     }
@@ -136,9 +137,7 @@ bn::fixed mck_shark_dodge::wave_size(mj::difficulty_level difficulty){
  * selects a location for the urchin
  */
 bn::fixed_point mck_shark_dodge::urchin_location() {
-    static constexpr int MAX_X = bn::display::width() / 2;
-    static constexpr int MAX_Y = bn::display::height() / 2;
-    static constexpr int MIN_Y = - bn::display::height() / 2;
+
     
     int spawn_x = rand_spawn.get_int(32, MAX_X);
     int spawn_y = rand_spawn.get_int(MIN_Y, MAX_Y);
