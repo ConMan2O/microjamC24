@@ -6,6 +6,8 @@
 #include "bn_sprite_animate_actions.h"  
 #include <bn_random.h>
 
+#include "bn_regular_bg_items_mck_ocean_background.h"
+
 #include "mj/mj_game_list.h"
 #include "mck/mck_bounds.h"
 
@@ -30,7 +32,8 @@ namespace mck {
         _player(player({0, 0}, 1)),
         _urchin(urchin(urchin_location())),
         _enemy_speed(enemy_speed(recommended_difficulty_level(completed_games, data))),
-        _wave_size(wave_size(recommended_difficulty_level(completed_games, data)))
+        _wave_size(wave_size(recommended_difficulty_level(completed_games, data))),
+        _background(bn::regular_bg_items::mck_ocean_background.create_bg())
     {
         for (int i = 0; i < ENEMIES_PER_WAVE; i++) { // add 3 enemies to the vector initially
             _enemies.push_back(enemy(_enemy_speed, data.random));
