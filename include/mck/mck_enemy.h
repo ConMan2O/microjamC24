@@ -5,6 +5,7 @@
 #include <bn_display.h>
 #include <bn_rect.h>
 #include <bn_random.h>
+#include <bn_sprite_animate_actions.h>
 
 #include "mj/mj_game.h"
 #include "mck/mck_bounds.h"
@@ -42,6 +43,8 @@ class enemy {
         // The pixels/frame the enemy moves in each dimension
         bn::fixed _xspeed;
         bn::fixed _yspeed;
+        // The animation for the enemy
+        bn::sprite_animate_action<2> _animation;
 
         /**
          * Moves the enemy based on its current x and y speeds

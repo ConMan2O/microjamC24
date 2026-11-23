@@ -64,7 +64,7 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
     _player.update();
 
     // update all enemy positions, check for collisions
-    for (enemy e : _enemies) {
+    for (enemy& e : _enemies) {
         e.update();
         if(_player.hitbox().intersects(e.hitbox()) ){
             _hit = true;
