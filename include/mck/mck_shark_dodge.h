@@ -39,6 +39,7 @@ namespace mck {
         const bn::fixed _wave_sizes[3] = {2, 3, 3};
         bn::fixed _enemy_speed;
         bn::fixed _wave_size;
+        bn::regular_bg_ptr _background;
 
         // Determines Enemy speed
         bn::fixed enemy_speed(mj::difficulty_level difficulty);
