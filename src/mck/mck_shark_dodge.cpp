@@ -15,7 +15,7 @@ namespace
 {
     // TODO add names to credits as appropriate
     constexpr bn::string_view code_credits[] = { "Matthew Renner", "Connor Stimpson", "Kevin Flores-Gonzalez" };
-    //constexpr bn::string_view graphics_credits[] = {};
+    constexpr bn::string_view graphics_credits[] = { "Matthew Renner", "Connor Stimpson", "Kevin Flores-Gonzalez" };
     //constexpr bn::string_view sfx_credits[] = {};
     //constexpr bn::string_view music_credits[] = {};
 }
