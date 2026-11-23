@@ -22,7 +22,7 @@ namespace
 
 MJ_GAME_LIST_ADD(mck::mck_shark_dodge)
 MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
-//MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
+MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
 //MJ_GAME_LIST_ADD_MUSIC_CREDITS(sfx_credits)
 //MJ_GAME_LIST_ADD_SFX_CREDITS(music_credits)
 
@@ -35,7 +35,7 @@ namespace mck {
         _wave_size(wave_size(recommended_difficulty_level(completed_games, data))),
         _background(bn::regular_bg_items::mck_ocean_background.create_bg())
     {
-        for (int i = 0; i < ENEMIES_PER_WAVE; i++) { // add 3 enemies to the vector initially
+        for (int i = 0; i < _wave_size; i++) { // add enemies to the vector based on difficulty
             _enemies.push_back(enemy(_enemy_speed, data.random));
         }
     }
@@ -78,8 +78,8 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
 
     if (!_hit) { // proceed only if player has not lost
         _timer++;
-        if (_timer % WAVE_INTERVAL_FRAMES == 0) { // every 50 frames, make 3 more sharks
-            for (int i = 0; i < ENEMIES_PER_WAVE; i++) {
+        if (_timer % WAVE_INTERVAL_FRAMES == 0) { // every 50 frames, make _wave_size more sharks
+            for (int i = 0; i < _wave_size; i++) {
                 _enemies.push_back(enemy(_enemy_speed, data.random));
             }
         }
