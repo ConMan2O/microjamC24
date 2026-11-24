@@ -86,6 +86,8 @@ mj::game_result mck_shark_dodge::play([[maybe_unused]] const mj::game_data& data
         }
     }
 
+    _urchin.update();
+
     mj::game_result result(_hit, false);
     return result;
 }
